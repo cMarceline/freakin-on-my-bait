@@ -40,8 +40,4 @@ Look at yourself
 Kill the snitch
 Hit a homerun (with the christian baby)
 
-# 0 Close the Game
-
-Brush your teeth
-1.
-Close the game
+# 0 Kill yourself
