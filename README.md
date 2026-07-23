@@ -39,5 +39,4 @@ Fireball (wizard)
 Look at yourself
 Kill the snitch
 Hit a homerun (with the christian baby)
-
 # 0 Kill yourself
