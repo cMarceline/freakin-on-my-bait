@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://b6qwqrs7qdf8s"]
+
+[ext_resource type="Script" uid="uid://bsl2jvfefpsnt" path="res://scripts/parentNode.gd" id="1_4348r"]
+[ext_resource type="Texture2D" uid="uid://btp0yop22v61b" path="res://Minigame/Take a Shit/PLACEHOLDER-Toilet.jpg" id="2_e6j2m"]
+[ext_resource type="Script" uid="uid://cavbcxo3adqef" path="res://scripts/winCon_Placement.gd" id="3_8n52i"]
+[ext_resource type="Texture2D" uid="uid://b752l8f256cea" path="res://Minigame/Take a Shit/PLACEHOLDER-poop.jpg" id="4_t1m00"]
+[ext_resource type="Script" uid="uid://dl0434ewq1h0l" path="res://scripts/draggable.gd" id="5_l5fr3"]
+[ext_resource type="Texture2D" uid="uid://c4v72efytfgr3" path="res://Minigame/man thumbs up.webp" id="6_8kbhc"]
+[ext_resource type="Script" uid="uid://dfudgbi5r6r2y" path="res://Scenes/timer.gd" id="7_38jg4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xxyth"]
+radius = 205.49
+
+[node name="Scene" type="Node2D" unique_id=98070602]
+script = ExtResource("1_4348r")
+
+[node name="Toilet" type="Sprite2D" parent="." unique_id=1821269713 node_paths=PackedStringArray("winDraggable")]
+position = Vector2(-271, 112)
+scale = Vector2(0.50180286, 0.5018029)
+texture = ExtResource("2_e6j2m")
+script = ExtResource("3_8n52i")
+winDraggable = NodePath("../Poop/poop_Area2d")
+
+[node name="toilet_Area2d" type="Area2D" parent="Toilet" unique_id=1020349895]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Toilet/toilet_Area2d" unique_id=2060045749]
+position = Vector2(19.928112, 151.45389)
+shape = SubResource("CircleShape2D_xxyth")
+
+[node name="Poop" type="Sprite2D" parent="." unique_id=701717242]
+position = Vector2(287, 24)
+scale = Vector2(0.14978904, 0.14978904)
+texture = ExtResource("4_t1m00")
+script = ExtResource("5_l5fr3")
+
+[node name="poop_Area2d" type="Area2D" parent="Poop" unique_id=911089495]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Poop/poop_Area2d" unique_id=122235910]
+shape = SubResource("CircleShape2D_xxyth")
+
+[node name="ManThumbsUp" type="Sprite2D" parent="." unique_id=1638333503]
+position = Vector2(277, 22)
+scale = Vector2(0.44659084, 0.6392562)
+texture = ExtResource("6_8kbhc")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=82518372]
+
+[node name="Timer" type="Timer" parent="." unique_id=914591238]
+script = ExtResource("7_38jg4")
+
+[node name="ProgressBar" type="ProgressBar" parent="Timer" unique_id=840650680]
+offset_left = -561.0
+offset_top = -310.0
+offset_right = 563.0
+offset_bottom = -283.0
+max_value = 1.0
+
+[connection signal="mouse_entered" from="Poop/poop_Area2d" to="Poop" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Poop/poop_Area2d" to="Poop" method="_on_area_2d_mouse_exited"]
+[connection signal="timeout" from="Timer" to="Toilet" method="_on_timer_timeout"]
